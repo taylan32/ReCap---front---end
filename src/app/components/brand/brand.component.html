@@ -1,0 +1,21 @@
+<!-- 
+<ul class="list-group">
+   <button
+   type="button "
+   class="list-group-item list-group-item-action"
+   aria-current="true"
+   *ngFor="let brand of brands"
+   >{{brand.name}}</button>
+
+</ul> -->
+<ul class="list-group" type="button">
+   <li (click)="setCurrentBrand({id:0, name:''})" [class]="getAllBrandClass()">
+      <strong>All brands</strong>
+   </li>
+
+   <li (click)="setCurrentBrand(brand)" *ngFor="let brand of brands" [class]="getCurrentBrandClass(brand)">
+      {{brand.name}}
+   </li>
+</ul>
+
+<h5 *ngIf="currentBrand.id!=0"><strong>{{currentBrand.name}}</strong> is selected</h5>
