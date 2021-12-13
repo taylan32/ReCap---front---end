@@ -2,22 +2,47 @@
     <span class="visually-hidden">Loading...</span>
 </div>
 
+<div class="mb-3">
+    <label for="filterText" class="form-label"><strong><u><em>Search</em></u></strong></label>
+    <!--  (filterText) -> import FormsModule -> app.module.ts -->
+    <input type="text" class="form-control" [(ngModel)]="filterText" list="datalistOptions" id="filterText"
+        placeholder="Type to search...">
+    <datalist id="datalistOptions">
+        <option value="Ford">
+        <option value="Honda">
+    </datalist>
+</div>
+<div *ngIf="filterText.length>3" class="alert alert-primary">
+    You are searching for <strong><u>{{filterText}}</u></strong>
+</div>
+
 <table class="table">
     <thead>
+        <td></td>
         <td>Brand</td>
         <td>Model Name</td>
         <td>Color</td>
         <td>Model Year</td>
         <td>Price</td>
         <!-- <td>Date</td> -->
+        <td>Price Added Tax</td>
     </thead>
     <tbody>
-        <tr *ngFor="let car of carsWithDetail">
+        <tr *ngFor="let car of carsWithDetail |filter:filterText ">
+            <td>Resim Gelecek</td>
             <td>{{car.brandName }}</td>
-            <td>{{car.modelName}}</td>
+            <td>{{car.modelName }}</td>
             <td>{{car.colorName}}</td>
             <td>{{car.modelYear}}</td>
-            <td>{{car.dailyPrice}}</td>
+            <td>{{car.dailyPrice | currency }}</td>
+            <td>{{car.dailyPrice | vatAdded:15 | currency }}</td>
+            <td>
+                <button routerLink="/cars/cardetail/{{car.carId}}" type="button" 
+                class="btn btn-primary">Details</button><br><br>
+                <button routerLink="/cars/carupdate/{{car.carId}}" type="button" 
+                class="btn btn-danger">Edit</button>
+                            
+              </td>
         </tr>
     </tbody>
 </table>

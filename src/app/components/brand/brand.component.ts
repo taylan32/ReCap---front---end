@@ -1,3 +1,5 @@
+import { CarDetailDto } from './../../models/carDetailDto';
+import { CarService } from './../../services/car.service';
 import { Brand } from './../../models/brand';
 import { BrandService } from './../../services/brand.service';
 import { Component, OnInit } from '@angular/core';
@@ -11,12 +13,15 @@ export class BrandComponent implements OnInit {
 
   brands: Brand[] = []
   dataLoaded: boolean = false
-  currentBrand : Brand = {id:0, name:''}
+  currentBrand: Brand = { id: 0, name: '' }
+  cars: CarDetailDto[] = []
+  carAmount: number = 0
 
-  constructor(private brandService: BrandService) { }
+  constructor(private brandService: BrandService, private carService: CarService) { }
 
   ngOnInit(): void {
     this.getBrands()
+    this.getAllCarNumber()
   }
 
   getBrands() {
@@ -30,16 +35,16 @@ export class BrandComponent implements OnInit {
     this.currentBrand = brand
   }
 
-  getCurrentBrandClass(brand:Brand){
-     if(brand == this.currentBrand){
-       return "list-group-item active"
-     }
-     else{
-       return "list-group-item"
-     }
+  getCurrentBrandClass(brand: Brand) {
+    if (brand == this.currentBrand) {
+      return "list-group-item active"
+    }
+    else {
+      return "list-group-item"
+    }
   }
 
-  getAllBrandClass(){
+  getAllBrandClass() {
     if (this.currentBrand.id == 0) {
       return "list-group-item active"
     }
@@ -47,6 +52,18 @@ export class BrandComponent implements OnInit {
       return "list-group-item"
     }
   }
-  
+
+  getAllCarNumber(){
+    this.carService.getAllCarsWithDetail().subscribe(response=>{
+      this.cars=response.data
+      this.carAmount = this.cars.length
+    })
+  }
+  getCarNumberByBrandId(brandId: number) {
+    this.carService.getAllCarWithDetailsByBrandId(this.currentBrand.id).subscribe(response => {
+      this.cars = response.data
+      this.carAmount = this.cars.length
+    })
+  }
 
 }

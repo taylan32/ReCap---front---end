@@ -9,13 +9,18 @@
 
 </ul> -->
 <ul class="list-group" type="button">
-   <li (click)="setCurrentBrand({id:0, name:''})" [class]="getAllBrandClass()">
+   <li (click)="setCurrentBrand({id:0, name:''})" (click)="getAllCarNumber()" [class]="getAllBrandClass()"
+      routerLink="/cars/">
       <strong>All brands</strong>
    </li>
 
-   <li (click)="setCurrentBrand(brand)" *ngFor="let brand of brands" [class]="getCurrentBrandClass(brand)">
-      {{brand.name}}
+   <li (click)="setCurrentBrand(brand)" (click)="getCarNumberByBrandId(brand.id)" routerLink="/cars/brand/{{brand.id}}"
+      *ngFor="let brand of brands" [class]="getCurrentBrandClass(brand)">
+      {{brand.name | uppercase}}
    </li>
 </ul>
 
-<h5 *ngIf="currentBrand.id!=0"><strong>{{currentBrand.name}}</strong> is selected</h5>
+<!-- <h5 *ngIf="currentBrand.id!=0"><strong>{{currentBrand.name}}</strong> is selected</h5> -->
+<div class="alert alert-primary">
+   <h5><strong>{{carAmount}}</strong> car found</h5>
+</div>

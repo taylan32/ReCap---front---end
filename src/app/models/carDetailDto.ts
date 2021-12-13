@@ -1,5 +1,6 @@
 export interface CarDetailDto{
     carId:number
+    brandId:number
     modelYear:number
     modelName:string
     brandName:string

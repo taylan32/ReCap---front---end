@@ -1,0 +1,111 @@
+<div class="content">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header"><h5 class="title">Add a car</h5></div>
+            <div class="card-body">
+                <form [formGroup]="carAddForm">
+                    <!-- <div class="form-group">
+                        <input type="text" 
+                        id="brandId" 
+                        formControlName="brandId" 
+                        class="form-control" 
+                        placeholder="Brand Id" />
+                    </div> -->
+                    <!-- select brand -->
+                    <div class="row mb-3">
+                        <div class="col-lg-2">
+                            <label for="brandSelect" class="form-label">Brand:</label>
+                        </div>
+                        <div class="col-lg">
+                            <select class="form-select" id="brandSelect" aria-label="select a brand" formContolName="brandId">
+                                <option selected>Select a brand</option>
+                                <option *ngFor="let brand of brands" value="{{brand.id}}">{{brand.name}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <!--  end select brand -->
+                    <!-- select color -->
+                    <div class="row mb-3">
+                        <div class="col-lg-2">
+                            <label for="colorSelect" class="form-label">Color:</label>
+                        </div>
+                        <div class="col-lg">
+                            <select class="form-select" id="colorSelect" aria-label="select a color" formContolName="colorId">
+                                <option selected>Select a color</option>
+                                <option *ngFor="let color of colors" value="{{color.id}}">{{color.name}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <!--  end select color -->
+                    <!-- enter model name -->
+                    <div class="row mb-3">
+                        <div class="col-lg-2">
+                            <label for="modelName" class="form-label">Model Name:</label>
+                        </div>
+                        <div class="col-lg">
+                            <input type="text"
+                             class="form-control" 
+                             id="modelNameInput" 
+                             rows="1" 
+                             formControlName="modelName" 
+                             placeholder="Model name..." >
+                        </div>
+                    </div>
+                    <!--  end enter model name -->
+                    <!-- enter model year -->
+                    <div class="row mb-3">
+                        <div class="col-lg-2">
+                            <label for="modelYearInput" class="form-label">Model Year:</label>
+                        </div>
+                        <div class="col-lg">
+                            <input type="number"
+                             class="form-control" 
+                             id="modelYearInput" 
+                             fromControlName="modelYaer"
+                              placeholder="e.g. 2016" >
+                        </div>
+                    </div>
+                    <!-- end enter model year -->
+                    <!-- enter daily price -->
+                    <div class="row mb-3">
+                        <div class="col-lg-2">
+                            <label for="dailyPriceInput" class="form-label">Daily Price:</label>
+                        </div>
+                        <div class="col-lg">
+                            <input type="number"
+                             class="form-control" 
+                             id="dailyPriceInput"
+                              fromControlName="dailyPrice" 
+                              placeholder="e.g. 200" >
+
+                        </div>
+                    </div>
+                    <!-- end enter daily price -->
+                    <!-- enter description -->
+                    <div class="row mb-3">
+                        <div class="col-lg-2">
+                            <label for="descriptionInput" class="from-label">Description:</label>
+                        </div>
+                        <div class="col-lg">
+                            <input type="text"
+                            class="form-control" 
+                            rows="3"
+                            formControlName="description"
+                            placeholder="Description...">
+                        </div>
+                    </div>
+                    <!-- end enter description -->
+                </form>
+
+            </div>
+
+            <div class="card-footer">
+                <div>
+                    <button class="btn btn-success" (click)="addCar()" type="button">Add</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
