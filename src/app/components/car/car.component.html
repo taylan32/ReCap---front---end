@@ -3,7 +3,7 @@
 </div>
 
 <div class="mb-3">
-    <label for="filterText" class="form-label"><strong><u><em>Search</em></u></strong></label>
+    <label for="filterText" class="form-label"><strong><u><em>Search for a brand</em></u></strong></label>
     <!--  (filterText) -> import FormsModule -> app.module.ts -->
     <input type="text" class="form-control" [(ngModel)]="filterText" list="datalistOptions" id="filterText"
         placeholder="Type to search...">
@@ -16,9 +16,13 @@
     You are searching for <strong><u>{{filterText}}</u></strong>
 </div>
 
-<table class="table">
+<div class="d-grid" style="margin-top: 5%; margin-bottom: 5%;">
+    <button class="btn btn-primary" routerLink="/cars/add">Add a car</button>
+</div>
+
+<table class="table" style="text-align: center;">
     <thead>
-        <td></td>
+        <td>Image</td>
         <td>Brand</td>
         <td>Model Name</td>
         <td>Color</td>
@@ -26,6 +30,7 @@
         <td>Price</td>
         <!-- <td>Date</td> -->
         <td>Price Added Tax</td>
+
     </thead>
     <tbody>
         <tr *ngFor="let car of carsWithDetail |filter:filterText ">

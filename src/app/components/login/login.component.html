@@ -1,0 +1,34 @@
+<body class="text-center">
+    <main class="form-signIn">
+        <h1 class="h3 mb-3 fw-normal">Log in</h1>
+        <form [formGroup]="loginForm">
+            <div class="form-floating">
+                <input
+                formControlName="email"
+                type="email"
+                class="form-control"
+                id="floatingInput"
+                placeholder="name@example.com"
+                />
+                <label for="floatingEmail">E-mail</label>
+            </div>
+            <div class="form-floating">
+                <input
+                formControlName="password"
+                type="password"
+                class="form-control"
+                id="floatingPassword"
+                placeholder="password"/>
+                <label for="floatingPassword">Password</label>
+            </div>
+            
+            <div class="checkbox mb-3">
+                <label>
+                    <input type="checkbox" value="rememberMe"/> Remember me
+                </label>
+            </div>
+            <button type="button" class="w-100 btn btn-lg btn-primary" (click)="login()" (click)="setAuthTrue()">Login</button>
+        </form>
+    </main>
+
+</body>

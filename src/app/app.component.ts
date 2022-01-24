@@ -1,3 +1,4 @@
+import { AuthService } from './services/auth.service';
 import { Component } from '@angular/core';
 
 @Component({
@@ -7,4 +8,21 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'recap';
+
+  isAuthenticated : boolean = false
+  constructor(private authService:AuthService){
+
+  }
+
+  ngOnInit(): void{
+    this.isAuth()
+  }
+
+  isAuth(){
+    if(this.authService.isAuthenticated()){
+      this.isAuthenticated = true
+    }
+   
+  }
+
 }

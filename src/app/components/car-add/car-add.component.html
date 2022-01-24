@@ -1,7 +1,9 @@
 <div class="content">
     <div class="col-md-12">
         <div class="card">
-            <div class="card-header"><h5 class="title">Add a car</h5></div>
+            <div class="card-header">
+                <h5 class="title">Add a car</h5>
+            </div>
             <div class="card-body">
                 <form [formGroup]="carAddForm">
                     <!-- <div class="form-group">
@@ -17,7 +19,8 @@
                             <label for="brandSelect" class="form-label">Brand:</label>
                         </div>
                         <div class="col-lg">
-                            <select class="form-select" id="brandSelect" aria-label="select a brand" formContolName="brandId">
+                            <select class="form-select" id="brandSelect" aria-label="select a brand"
+                                formContolName="brandId">
                                 <option selected>Select a brand</option>
                                 <option *ngFor="let brand of brands" value="{{brand.id}}">{{brand.name}}</option>
                             </select>
@@ -30,7 +33,8 @@
                             <label for="colorSelect" class="form-label">Color:</label>
                         </div>
                         <div class="col-lg">
-                            <select class="form-select" id="colorSelect" aria-label="select a color" formContolName="colorId">
+                            <select class="form-select" id="colorSelect" aria-label="select a color"
+                                formContolName="colorId">
                                 <option selected>Select a color</option>
                                 <option *ngFor="let color of colors" value="{{color.id}}">{{color.name}}</option>
                             </select>
@@ -43,12 +47,8 @@
                             <label for="modelName" class="form-label">Model Name:</label>
                         </div>
                         <div class="col-lg">
-                            <input type="text"
-                             class="form-control" 
-                             id="modelNameInput" 
-                             rows="1" 
-                             formControlName="modelName" 
-                             placeholder="Model name..." >
+                            <input type="text" class="form-control" id="modelNameInput" rows="1"
+                                formControlName="modelName" placeholder="Model name...">
                         </div>
                     </div>
                     <!--  end enter model name -->
@@ -58,11 +58,8 @@
                             <label for="modelYearInput" class="form-label">Model Year:</label>
                         </div>
                         <div class="col-lg">
-                            <input type="number"
-                             class="form-control" 
-                             id="modelYearInput" 
-                             fromControlName="modelYaer"
-                              placeholder="e.g. 2016" >
+                            <input type="number" class="form-control" id="modelYearInput" fromControlName="modelYaer"
+                                placeholder="e.g. 2016" required>
                         </div>
                     </div>
                     <!-- end enter model year -->
@@ -72,11 +69,8 @@
                             <label for="dailyPriceInput" class="form-label">Daily Price:</label>
                         </div>
                         <div class="col-lg">
-                            <input type="number"
-                             class="form-control" 
-                             id="dailyPriceInput"
-                              fromControlName="dailyPrice" 
-                              placeholder="e.g. 200" >
+                            <input type="number" class="form-control" id="dailyPriceInput" fromControlName="dailyPrice"
+                                placeholder="e.g. 200" required>
 
                         </div>
                     </div>
@@ -87,23 +81,36 @@
                             <label for="descriptionInput" class="from-label">Description:</label>
                         </div>
                         <div class="col-lg">
-                            <input type="text"
+                            <!-- <input type="text"
                             class="form-control" 
                             rows="3"
                             formControlName="description"
-                            placeholder="Description...">
+                            placeholder="Description..."> -->
+                            <textarea class="form-control" rows="5" formContolName="description" placeholder="Type description."
+                                required></textarea>
                         </div>
                     </div>
                     <!-- end enter description -->
+                    <div class="card-footer" style="background-color: white;">
+                        <div class="row mb-3">
+                            
+                                yan yana nasıl yapılır
+                                <div class="row">
+                                    <div class="col">
+                                    <button class="btn btn-success" (click)="addCar()" type="button" style="margin-bottom: 5%; margin-top: 5%;">Add</button>
+                                    </div>
+                                    <div class="col">
+                                    <input class="btn btn-primary" type="Reset" value="Reset" style="margin-bottom: 5%; margin-top: 5%;"/>
+                                      </div>
+                                  </div>
+                            
+                        </div>
+                    </div>
                 </form>
 
             </div>
 
-            <div class="card-footer">
-                <div>
-                    <button class="btn btn-success" (click)="addCar()" type="button">Add</button>
-                </div>
-            </div>
+            <!--sadsad>-->
         </div>
 
     </div>
