@@ -1,1 +1,29 @@
-<p>car-detail works!</p>
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <table>
+                <tbody>
+                    <tr *ngFor="let car of carImages">
+                        <td><img src="" alt="Image not found" title="Date: {{car.date}}"></td>
+
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-md-4">
+            <ul class="list-group list-group-flush" *ngFor="let car of carWithDetail">
+                <li class="list-group-item">Brand: {{car.brandName}}</li>
+                <li class="list-group-item">Model: {{car.modelName}}</li>
+                <li class="list-group-item">Color: {{car.colorName}}</li>
+                <li class="list-group-item">DailyPrice: {{car.dailyPrice | currency}}</li>
+                <li class="list-group-item">DailyPrice: {{car.dailyPrice | vatAdded:15 | currency}}</li>
+            </ul>
+            <div class="d-grid gap-2">
+                <button class="btn btn-danger">Delete</button>
+                <button class="btn btn-info">Update</button>
+            </div>
+        </div>
+
+    </div>
+
+</div>

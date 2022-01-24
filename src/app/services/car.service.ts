@@ -1,3 +1,4 @@
+import { SingleResponseModel } from './../models/singleResponseModel';
 import { ResponseModel } from './../models/responseModel';
 import { CarDetailDto } from './../models/carDetailDto';
 import { ListResponseModel } from './../models/listResponseModel';
@@ -39,6 +40,15 @@ export class CarService {
   addCar(car: Car): Observable<ResponseModel> {
     let newPath = this.apiUrl + "cars/add"
     return this.httpClient.post<ResponseModel>(newPath,car)
+  }
+  getCarDetail(carId:number):Observable<ListResponseModel<CarDetailDto>>{
+    let newPath = this.apiUrl + "getCarDetails?carId=" + carId
+    return this.httpClient.get<ListResponseModel<CarDetailDto>>(newPath)
+  }
+
+  delete(car:Car):Observable<void>{
+    let newPath = this.apiUrl + "delete"
+    return this.httpClient.post<void>(newPath,car)
   }
 
 }

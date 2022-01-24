@@ -77,6 +77,7 @@ export class CarAddComponent implements OnInit {
     else{
       this.toastrService.warning("All fied must be entered.")
     }
+    console.log(this.carAddForm.value)
   }
 
 }

@@ -39,12 +39,10 @@ export class LoginComponent implements OnInit {
       },responseError=>{
         this.toastrService.error(responseError)
       })
-     
+      this.appComponent.isAuthenticated=true
     }
   }
+ 
 
-  setAuthTrue(){
-    this.appComponent.isAuthenticated=true
-  }
-
+  
 }

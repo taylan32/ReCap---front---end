@@ -1,3 +1,7 @@
+import { AppComponent } from './../../app.component';
+
+
+
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +11,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NaviComponent implements OnInit {
 
-  constructor() { }
+  constructor(private appComponent:AppComponent) { }
 
   ngOnInit(): void {
+    
   }
 
+  signOut(){
+
+    if(this.appComponent.isAuthenticated){
+      localStorage.removeItem("token")
+      this.appComponent.isAuthenticated = false
+    }
+  }
+  
 }
