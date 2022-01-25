@@ -20,7 +20,7 @@
                         </div>
                         <div class="col-lg">
                             <select class="form-select" id="brandSelect" aria-label="select a brand"
-                                formContolName="brandId">
+                                formControlName="brandId">
                                 <option selected>Select a brand</option>
                                 <option *ngFor="let brand of brands" value="{{brand.id}}">{{brand.name}}</option>
                             </select>
@@ -34,7 +34,7 @@
                         </div>
                         <div class="col-lg">
                             <select class="form-select" id="colorSelect" aria-label="select a color"
-                                formContolName="colorId">
+                                formControlName="colorId">
                                 <option selected>Select a color</option>
                                 <option *ngFor="let color of colors" value="{{color.id}}">{{color.name}}</option>
                             </select>
@@ -58,7 +58,7 @@
                             <label for="modelYearInput" class="form-label">Model Year:</label>
                         </div>
                         <div class="col-lg">
-                            <input type="number" class="form-control" id="modelYearInput" fromControlName="modelYaer"
+                            <input type="text" class="form-control" id="modelYearInput" formControlName="modelYear"
                                 placeholder="e.g. 2016" required>
                         </div>
                     </div>
@@ -69,7 +69,7 @@
                             <label for="dailyPriceInput" class="form-label">Daily Price:</label>
                         </div>
                         <div class="col-lg">
-                            <input type="number" class="form-control" id="dailyPriceInput" fromControlName="dailyPrice"
+                            <input type="number" class="form-control" id="dailyPriceInput" formControlName="dailyPrice"
                                 placeholder="e.g. 200" required>
 
                         </div>
@@ -86,7 +86,7 @@
                             rows="3"
                             formControlName="description"
                             placeholder="Description..."> -->
-                            <textarea class="form-control" rows="5" formContolName="description"
+                            <textarea class="form-control" rows="5" formControlName="description"
                                 placeholder="Type description." required></textarea>
                         </div>
                     </div>

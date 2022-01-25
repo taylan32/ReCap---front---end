@@ -38,7 +38,7 @@ export class CarService {
   }
 
   addCar(car: Car): Observable<ResponseModel> {
-    let newPath = this.apiUrl + "cars/add"
+    let newPath = this.apiUrl + "add"
     return this.httpClient.post<ResponseModel>(newPath,car)
   }
   getCarDetail(carId:number):Observable<ListResponseModel<CarDetailDto>>{
@@ -46,9 +46,9 @@ export class CarService {
     return this.httpClient.get<ListResponseModel<CarDetailDto>>(newPath)
   }
 
-  delete(car:Car):Observable<void>{
+  delete(car:Car):Observable<ResponseModel>{
     let newPath = this.apiUrl + "delete"
-    return this.httpClient.post<void>(newPath,car)
+    return this.httpClient.post<ResponseModel>(newPath,car)
   }
 
 }

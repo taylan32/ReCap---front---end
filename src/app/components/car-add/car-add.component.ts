@@ -1,3 +1,5 @@
+import { CarDetailDto } from './../../models/carDetailDto';
+import { Car } from './../../models/car';
 import { Router, RouterModule } from '@angular/router';
 import { ColorService } from './../../services/color.service';
 import { Color } from './../../models/color';
@@ -25,8 +27,8 @@ export class CarAddComponent implements OnInit {
     private brandService: BrandService,
     private carService: CarService,
     private colorService: ColorService,
-    private toastrService:ToastrService,
-    private router:Router) { }
+    private toastrService: ToastrService,
+    private router: Router) { }
 
   ngOnInit(): void {
     this.createCarAddForm()
@@ -57,27 +59,36 @@ export class CarAddComponent implements OnInit {
     })
   }
 
-  addCar(){
-    if(this.carAddForm.valid){
-      let carModel= Object.assign({},this.carAddForm.value)
-      carModel.brandId=parseInt(carModel.brandId)
-      carModel.colorId=parseInt(carModel.colorId)
-      this.carService.addCar(carModel).subscribe(response=>{
-        this.toastrService.success(response.message,"Car added.")
+  addCar() {
+    if (this.carAddForm.valid) {
+      let carModel: CarDetailDto = Object.assign({}, this.carAddForm.value)
+      // carModel.brandId = parseInt(carModel.brandId)
+      // carModel.colorId = parseInt(carModel.colorId)
+      let carToBeAdded: Car = {
+        id: carModel.carId,
+        brandId: carModel.brandId,
+        colorId: carModel.colorId,
+        modelName: carModel.modelName,
+        modelYear: carModel.modelYear,
+        dailyPrice: carModel.dailyPrice,
+        description: carModel.description
+      } 
+      this.carService.addCar(carToBeAdded).subscribe((response) => {
+        this.toastrService.success(response.message, "Car added.")
         this.router.navigate(['/cars'])
-        this.toastrService.info("You are being directed to cars page")
-      },responseError=>{
-        if(responseError.error.ValidationErrors.length>0){
-          for(let i=0; i<responseError.error.ValidationErrors.lenght;i++){
-            this.toastrService.error(responseError.error.ValidationErrors[i].ErrorMessage,"Validation error")
-          }
-        }
+        this.toastrService.info("You are being directed to home page")
+      }, (responseError) => {
+        // if (responseError.error.Errors.length > 0) {
+        //   for (let i = 0; i < responseError.error.Errors.length; i++) {
+        //     this.toastrService.error(responseError.error.Errors[i].ErrorMessage, "Validation error")
+        //   }
+        // }
+        this.toastrService.error("Something is wrong","Error")
       })
     }
-    else{
+    else {
       this.toastrService.warning("All fied must be entered.")
-    }
-    console.log(this.carAddForm.value)
+     }
   }
 
 }
