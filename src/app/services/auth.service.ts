@@ -1,3 +1,5 @@
+import { Observable } from 'rxjs';
+import { RegisterModel } from './../models/registerModel';
 import { TokenModel } from './../models/tokenModel';
 import { SingleResponseModel } from './../models/singleResponseModel';
 import { LoginModel } from './../models/loginModel';
@@ -18,6 +20,9 @@ export class AuthService {
     return this.httpClient.post<SingleResponseModel<TokenModel>>(this.apiUrl+"login",loginModel)
   }
 
+  register(registerModel:RegisterModel):Observable<SingleResponseModel<TokenModel>>{
+    return this.httpClient.post<SingleResponseModel<TokenModel>>(this.apiUrl+"register",registerModel)
+  }
   isAuthenticated(){
     if(localStorage.getItem("token")){
       return true;

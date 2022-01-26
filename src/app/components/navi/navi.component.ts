@@ -22,6 +22,7 @@ export class NaviComponent implements OnInit {
 
     if(this.appComponent.isAuthenticated){
       localStorage.removeItem("token")
+      localStorage.removeItem("email")
       this.appComponent.isAuthenticated = false
       this.router.navigate(['/login'])
     }

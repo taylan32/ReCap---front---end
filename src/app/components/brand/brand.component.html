@@ -1,13 +1,4 @@
-<!-- 
-<ul class="list-group">
-   <button
-   type="button "
-   class="list-group-item list-group-item-action"
-   aria-current="true"
-   *ngFor="let brand of brands"
-   >{{brand.name}}</button>
 
-</ul> -->
 <ul class="list-group" type="button">
    <li (click)="setCurrentBrand({id:0, name:''})" (click)="getAllCarNumber()" [class]="getAllBrandClass()"
       routerLink="/cars/">
@@ -20,7 +11,7 @@
    </li>
 </ul>
 
-<!-- <h5 *ngIf="currentBrand.id!=0"><strong>{{currentBrand.name}}</strong> is selected</h5> -->
+
 <br>
 <div class="alert alert-primary">
    <h5><strong>{{carAmount}}</strong> car found</h5>

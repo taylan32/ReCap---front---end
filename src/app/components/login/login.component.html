@@ -27,6 +27,10 @@
                     <input type="checkbox" value="rememberMe"/> Remember me
                 </label>
             </div>
+            <div style="padding-bottom: 2%;">
+                <input type="button"  class="btn btn-primary" (click)="setIsAuthenticatedTrue()" 
+                routerLink="/register" value="Sign up">
+            </div>
             <button type="button" class="w-100 btn btn-lg btn-primary" (click)="login()" >Login</button>
         </form>
     </main>

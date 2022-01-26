@@ -83,7 +83,7 @@ export class CarAddComponent implements OnInit {
         //     this.toastrService.error(responseError.error.Errors[i].ErrorMessage, "Validation error")
         //   }
         // }
-        this.toastrService.error("Something is wrong","Error")
+        this.toastrService.error("Authorization denied","Error")
       })
     }
     else {
