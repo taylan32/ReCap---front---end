@@ -1,0 +1,128 @@
+<div class="content">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="title">Add a car</h5>
+                    </div>
+                    <div class="card-body">
+                        <form [formGroup]="carUpdateForm">
+                        
+                            <!-- select brand -->
+                            <div class="row mb-3">
+                                <div class="col-lg-2">
+                                    <label for="brandSelect" class="form-label">Brand:</label>
+                                </div>
+                                <div class="col-lg">
+                                    <select class="form-select" id="brandSelect" aria-label="select a brand"
+                                        formControlName="brandId">
+                                        <option selected>Select a brand</option>
+                                        <option *ngFor="let brand of brands" value="{{brand.id}}">{{brand.name}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <!--  end select brand -->
+                            <!-- enter model name -->
+                            <div class="row mb-3">
+                                <div class="col-lg-2">
+                                    <label for="modelName" class="form-label">Model Name:</label>
+                                </div>
+                                <div class="col-lg">
+                                    <input type="text" class="form-control" id="modelNameInput" rows="1"
+                                        formControlName="modelName" placeholder="Model name...">
+                                </div>
+                            </div>
+                            <!--  end enter model name -->
+                            <!-- select color -->
+                            <div class="row mb-3">
+                                <div class="col-lg-2">
+                                    <label for="colorSelect" class="form-label">Color:</label>
+                                </div>
+                                <div class="col-lg">
+                                    <select class="form-select" id="colorSelect" aria-label="select a color"
+                                        formControlName="colorId">
+                                        <option selected>Select a color</option>
+                                        <option *ngFor="let color of colors" value="{{color.id}}">{{color.name}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <!--  end select color -->
+                            <!-- enter model year -->
+                            <div class="row mb-3">
+                                <div class="col-lg-2">
+                                    <label for="modelYearInput" class="form-label">Model Year:</label>
+                                </div>
+                                <div class="col-lg">
+                                    <input type="text" class="form-control" id="modelYearInput" formControlName="modelYear"
+                                        placeholder="e.g. 2016" required>
+                                </div>
+                            </div>
+                            <!-- end enter model year -->
+                            <!-- enter daily price -->
+                            <div class="row mb-3">
+                                <div class="col-lg-2">
+                                    <label for="dailyPriceInput" class="form-label">Daily Price:</label>
+                                </div>
+                                <div class="col-lg">
+                                    <input type="number" class="form-control" id="dailyPriceInput" formControlName="dailyPrice"
+                                        placeholder="e.g. 200" required>
+        
+                                </div>
+                            </div>
+                            <!-- end enter daily price -->
+                            <!-- enter description -->
+                            <div class="row mb-3">
+                                <div class="col-lg-2">
+                                    <label for="descriptionInput" class="from-label">Description:</label>
+                                </div>
+                                <div class="col-lg">
+                                   
+                                    <textarea class="form-control" rows="5" formControlName="description"
+                                        placeholder="Type description." required></textarea>
+                                </div>
+                            </div>
+                            <!-- end enter description -->
+                            
+                            <div class="card-footer" style="background-color: white;">
+                                <div class="row mb-3">
+                                    <div style="margin-left:20%; margin-right: 20%;">
+                                        <div class="row">
+                                            <div class="col">
+                                                <button class="btn btn-success" (click)="update()" type="button"
+                                                    >Update</button>
+                                            </div>
+                                            <div class="col">
+                                                <input class="btn btn-primary" type="Reset" value="Reset"/>
+                                            </div>
+                                        </div>
+                                    </div>
+        
+                                </div>
+                            </div>
+                        </form>
+        
+                    </div>
+        
+        
+                </div>
+           
+            </div>
+            <div class="col-md-4">
+                <h5 class="title">Current Informations</h5>
+                <ul class="list-group list-group-flush" *ngFor="let car of carDetails">
+                    <li class="list-group-item">Brand: {{car.brandName}}</li>
+                    <li class="list-group-item">Model: {{car.modelName}}</li>
+                    <li class="list-group-item">Color: {{car.colorName}}</li>
+                    <li class="list-group-item">DailyPrice: {{car.dailyPrice | currency}}</li>
+                    <li class="list-group-item">DailyPrice: {{car.dailyPrice | vatAdded:15 | currency}}</li>
+                    <li class="list-group-item">Description: {{car.description}}</li>
+                </ul>
+            </div>
+            
+
+        </div>
+
+    </div>
+
+</div>

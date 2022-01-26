@@ -1,3 +1,4 @@
+import { Router, RouterModule } from '@angular/router';
 import { AppComponent } from './../../app.component';
 
 
@@ -11,7 +12,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NaviComponent implements OnInit {
 
-  constructor(private appComponent:AppComponent) { }
+  constructor(private appComponent:AppComponent,private router:Router) { }
 
   ngOnInit(): void {
     
@@ -22,6 +23,7 @@ export class NaviComponent implements OnInit {
     if(this.appComponent.isAuthenticated){
       localStorage.removeItem("token")
       this.appComponent.isAuthenticated = false
+      this.router.navigate(['/login'])
     }
   }
   

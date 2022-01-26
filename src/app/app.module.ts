@@ -17,6 +17,7 @@ import { VatAddedPipe } from './pipes/vat-added.pipe';
 import { FilterPipe } from './pipes/filter.pipe';
 import { CarDetailComponent } from './components/car-detail/car-detail.component';
 import { LoginComponent } from './components/login/login.component';
+import { CarUpdateComponent } from './components/car-update/car-update.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { LoginComponent } from './components/login/login.component';
     FilterPipe,
     CarDetailComponent,
     CarAddComponent,
-    LoginComponent
+    LoginComponent,
+    CarUpdateComponent
   ],
   imports: [
     BrowserModule,

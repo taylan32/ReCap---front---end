@@ -22,6 +22,10 @@ export class CarService {
     let newPath = this.apiUrl + "getAll"
     return this.httpClient.get<ListResponseModel<Car>>(newPath)
   }
+  getCar(carId: number): Observable<SingleResponseModel<Car>> {
+    let newPath = this.apiUrl + "getByCarId?carId=" + carId
+    return this.httpClient.get<SingleResponseModel<Car>>(newPath)
+  }
 
   getAllCarsWithDetail(): Observable<ListResponseModel<CarDetailDto>> {
     let newPath = this.apiUrl + "getAllWithDetails"
@@ -39,16 +43,19 @@ export class CarService {
 
   addCar(car: Car): Observable<ResponseModel> {
     let newPath = this.apiUrl + "add"
-    return this.httpClient.post<ResponseModel>(newPath,car)
+    return this.httpClient.post<ResponseModel>(newPath, car)
   }
-  getCarDetail(carId:number):Observable<ListResponseModel<CarDetailDto>>{
+  getCarDetail(carId: number): Observable<ListResponseModel<CarDetailDto>> {
     let newPath = this.apiUrl + "getCarDetails?carId=" + carId
     return this.httpClient.get<ListResponseModel<CarDetailDto>>(newPath)
   }
 
-  delete(car:Car):Observable<ResponseModel>{
+  delete(car: Car): Observable<ResponseModel> {
     let newPath = this.apiUrl + "delete"
-    return this.httpClient.post<ResponseModel>(newPath,car)
+    return this.httpClient.post<ResponseModel>(newPath, car)
   }
-
+  update(car:Car):Observable<ResponseModel>{
+    let newPath = this.apiUrl + "update"
+    return this.httpClient.post<ResponseModel>(newPath, car)
+  }
 }

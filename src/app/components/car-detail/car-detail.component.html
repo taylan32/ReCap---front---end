@@ -17,10 +17,11 @@
                 <li class="list-group-item">Color: {{car.colorName}}</li>
                 <li class="list-group-item">DailyPrice: {{car.dailyPrice | currency}}</li>
                 <li class="list-group-item">DailyPrice: {{car.dailyPrice | vatAdded:15 | currency}}</li>
+                <li class="list-group-item">Description: {{car.description}}</li>
             </ul>
             <div class="d-grid gap-2">
-                <button class="btn btn-danger">Delete</button>
-                <button class="btn btn-info">Update</button>
+                <button class="btn btn-danger" (click)="delete()">Delete</button>
+                <button class="btn btn-info" routerLink="/cars/update/{{carWithDetail[0].carId}}">Update</button>
             </div>
         </div>
 
