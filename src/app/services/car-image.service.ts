@@ -1,3 +1,4 @@
+import { ResponseModel } from './../models/responseModel';
 import { CarImage } from './../models/carImage';
 import { ListResponseModel } from './../models/listResponseModel';
 import { Observable } from 'rxjs';
@@ -18,6 +19,14 @@ export class CarImageService {
     return this.httpClient.get<ListResponseModel<CarImage>>(newPath)
   }
 
-  
+  add(image:CarImage):Observable<ResponseModel>{
+    let newPath = this.apiUrl + "add"
+    return this.httpClient.post<ResponseModel>(newPath, image)
+  }
+
+  delete(image:CarImage):Observable<ResponseModel>{
+    let newPath = this.apiUrl + "delete"
+    return this.httpClient.post<ResponseModel>(newPath, image)
+  }
 
 }

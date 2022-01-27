@@ -12,7 +12,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NaviComponent implements OnInit {
 
-  constructor(private appComponent:AppComponent,private router:Router) { }
+  constructor(
+    private appComponent:AppComponent,
+    private router:Router
+    ) { }
 
   ngOnInit(): void {
     
@@ -26,6 +29,10 @@ export class NaviComponent implements OnInit {
       this.appComponent.isAuthenticated = false
       this.router.navigate(['/login'])
     }
+  }
+  
+  isAuthorized(){
+
   }
   
 }

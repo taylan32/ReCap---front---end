@@ -21,6 +21,8 @@ import { CarUpdateComponent } from './components/car-update/car-update.component
 import { RegisterComponent } from './components/register/register.component';
 import { BrandAddComponent } from './components/brand-add/brand-add.component';
 import { ColorAddComponent } from './components/color-add/color-add.component';
+import { CarImageAddComponent } from './components/car-image-add/car-image-add.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +39,9 @@ import { ColorAddComponent } from './components/color-add/color-add.component';
     CarUpdateComponent,
     RegisterComponent,
     BrandAddComponent,
-    ColorAddComponent
+    ColorAddComponent,
+    CarImageAddComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

@@ -2,9 +2,10 @@
     <div class="row">
         <div class="col-md-8">
             <table>
+                <h5 class="title">Images</h5>
                 <tbody>
                     <tr *ngFor="let car of carImages">
-                        <td><img src="" alt="Image not found" title="Date: {{car.date}}"></td>
+                        <td><img src="{{car.imagePath}}" alt="Image not found" title="Date: {{car.date}}"></td>
 
                     </tr>
                 </tbody>
@@ -22,6 +23,7 @@
             <div class="d-grid gap-2">
                 <button class="btn btn-danger" (click)="delete()">Delete</button>
                 <button class="btn btn-info" routerLink="/cars/update/{{carWithDetail[0].carId}}">Update</button>
+                <button class="btn btn-success" routerLink="/carImages/add/{{carWithDetail[0].carId}}">Add an image</button>
             </div>
         </div>
 

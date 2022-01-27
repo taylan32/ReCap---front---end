@@ -1,3 +1,4 @@
+import { ToastrService } from 'ngx-toastr';
 
 import { CarDetailDto } from './../../models/carDetailDto';
 import { CarService } from './../../services/car.service';
@@ -17,7 +18,8 @@ export class CarComponent implements OnInit {
   dataLoaded: boolean = false
   filterText:string=""
   constructor(private carService: CarService,
-    private activatedRoot: ActivatedRoute) { }
+    private activatedRoot: ActivatedRoute,
+    private toastrService:ToastrService) { }
 
   ngOnInit(): void {
     this.activatedRoot.params.subscribe(params => {
@@ -43,6 +45,8 @@ export class CarComponent implements OnInit {
     this.carService.getAllCarsWithDetail().subscribe(response => {
       this.carsWithDetail = response.data
       this.dataLoaded = true
+    },errorResponse=>{
+      this.toastrService.error("Internal server error","Error")
     })
   }
 

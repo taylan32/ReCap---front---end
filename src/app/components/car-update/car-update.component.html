@@ -118,7 +118,9 @@
                     <li class="list-group-item">DailyPrice: {{car.dailyPrice | vatAdded:15 | currency}}</li>
                     <li class="list-group-item">Description: {{car.description}}</li>
                 </ul>
+                <button class="btn btn-secondary" routerLink="/carImages/add/{{car.id}}">Add an image</button>
             </div>
+            
             
 
         </div>

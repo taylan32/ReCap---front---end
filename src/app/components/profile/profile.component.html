@@ -1,0 +1,21 @@
+<body class="text-center">
+    <main class="form-signUp">
+        <form [formGroup]="companyNameForm">
+            <h1 class="title">Company Name</h1>
+
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" formControlName="companyName"id="floatingInput"
+                    placeholder="Type company name...">
+                <label for="floatingInput">Company Name</label>
+            </div>
+
+            
+            <div class="d-grid gap-2">
+                <input type="button" class="btn btn-success" value="Save" (click)="addCustomer()">
+                <input type="reset" class="btn btn-primary" value="Reset">
+
+            </div>
+        </form>
+    </main>
+
+</body>
