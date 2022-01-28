@@ -12,13 +12,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NaviComponent implements OnInit {
 
+  email:any
+  isAuthenticatedForSingOutButton:boolean = this.appComponent.isAuthenticated
   constructor(
     private appComponent:AppComponent,
     private router:Router
     ) { }
 
   ngOnInit(): void {
-    
+    this.getEmail()
   }
 
   signOut(){
@@ -32,8 +34,11 @@ export class NaviComponent implements OnInit {
     }
   }
   
-  isAuthorized(){
-
+  getEmail(){
+    this.email = localStorage.getItem("email")
   }
+
+
+
   
 }

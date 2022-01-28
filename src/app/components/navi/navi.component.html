@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-light  fixed-top" style="background-color:lightblue;" >
   <div class="container-fluid">
-    <a class="navbar-brand" href="#"><mark><strong>Alparslan rent a car</strong></mark></a>
+    <a class="navbar-brand" href="/"><mark><strong>Alparslan rent a car</strong></mark></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -8,12 +8,10 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
+          <a class="nav-link active" aria-current="page" href="/">Home</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li>
-        <div class="dropdown">
+        
+        <!-- <div class="dropdown">
           <button type="button" class="btn btn-success dropdown-toggle"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Sepet</button>
           <div class="dropdown-menu"> 
             <div class="dropdown-header">Sepet Elamanları</div>
@@ -21,13 +19,20 @@
             <div class="dropdown-divider"></div>
             <a class="dropdown-item">Item2</a>
           </div>
-        </div>
-        <li class="nav-item">
-          <a class="nav-link disabled">Disabled</a>
-        </li>
+        </div> -->
+        
       </ul>
       <div>
-        <button class="btn btn-primary" (click)="signOut()">Sign in / Sign out</button>
+        <div class="dropdown">
+          <button type="button" class="btn btn-success dropdown-toggle"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{email}}</button>
+          <div class="dropdown-menu"> 
+            <!-- <div class="dropdown-header">Header</div> -->
+            <a class="dropdown-item" (click)="signOut()">Sign out</a>
+            <div class="dropdown-divider"></div>
+            <!-- <a class="dropdown-item">Item2</a> -->
+          </div>
+        </div>
+        <!-- <button class="btn btn-primary" (click)="signOut()">Sign in / Sign out</button> -->
       </div>
     </div>
   </div>

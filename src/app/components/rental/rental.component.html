@@ -1,6 +1,10 @@
+<h5 class="title text-center" style="padding-bottom: 2%;">
+    <strong>Rental History For All Cars </strong>
+</h5>
+
 <table class="table" style="text-align: center;">
     <thead>
-        <td>Image</td>
+        
         <td>Customer Name</td>
         <td>Brand</td>
         <td>Model</td>
@@ -14,7 +18,6 @@
     </thead>
     <tbody>
         <tr *ngFor="let rental of rentals">
-            <td></td>
             <td>{{rental.userName}}</td>
             <td>{{rental.brandName | uppercase}}</td>
             <td>Model Name</td>
