@@ -1,32 +1,107 @@
-<div class="container">
-    <div class="row">
-        <div class="col-md-8">
-            <table>
-                <h5 class="title">Images</h5>
-                <tbody>
-                    <tr *ngFor="let car of carImages">
-                        <td><img src="{{car.imagePath}}" alt="Image not found" title="Date: {{car.date}}"></td>
+<div *ngIf="isAuthorized==true">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <table>
+                    <h5 class="title">Images</h5>
+                    <tbody>
+                        <tr *ngFor="let car of carImages">
+                            <td><img src="{{car.imagePath}}" alt="Image not found" title="Date: {{car.date}}"></td>
 
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <div class="col-md-4">
-            <ul class="list-group list-group-flush" *ngFor="let car of carWithDetail">
-                <li class="list-group-item">Brand: {{car.brandName}}</li>
-                <li class="list-group-item">Model: {{car.modelName}}</li>
-                <li class="list-group-item">Color: {{car.colorName}}</li>
-                <li class="list-group-item">DailyPrice: {{car.dailyPrice | currency}}</li>
-                <li class="list-group-item">DailyPrice: {{car.dailyPrice | vatAdded:15 | currency}}</li>
-                <li class="list-group-item">Description: {{car.description}}</li>
-            </ul>
-            <div class="d-grid gap-2">
-                <button class="btn btn-danger" (click)="delete()">Delete</button>
-                <button class="btn btn-info" routerLink="/cars/update/{{carWithDetail[0].carId}}">Update</button>
-                <button class="btn btn-success" routerLink="/carImages/add/{{carWithDetail[0].carId}}">Add an image</button>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
+            <div class="col-md-4">
+                <ul class="list-group list-group-flush" *ngFor="let car of carWithDetail">
+                    <li class="list-group-item">Brand: {{car.brandName}}</li>
+                    <li class="list-group-item">Model: {{car.modelName}}</li>
+                    <li class="list-group-item">Color: {{car.colorName}}</li>
+                    <li class="list-group-item">DailyPrice: {{car.dailyPrice | currency}}</li>
+                    <li class="list-group-item">DailyPrice: {{car.dailyPrice | vatAdded:15 | currency}}</li>
+                    <li class="list-group-item">Description: {{car.description}}</li>
+                </ul>
+                <div class="d-grid gap-2">
+                    <button class="btn btn-danger" (click)="delete()">Delete</button>
+                    <button class="btn btn-info" routerLink="/cars/update/{{carWithDetail[0].carId}}">Update</button>
+                    <button class="btn btn-success" routerLink="/carImages/add/{{carWithDetail[0].carId}}">Add an
+                        image</button>
+                </div>
+            </div>
+
         </div>
 
     </div>
+</div>
 
+<div *ngIf="isAuthorized==false">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <table>
+                    <h5 class="title">Images</h5>
+                    <tbody>
+                        <tr *ngFor="let car of carImages">
+                            <td><img src="{{car.imagePath}}" alt="Image not found" title="Date: {{car.date}}"></td>
+
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-md-4">
+                <ul class="list-group list-group-flush" *ngFor="let car of carWithDetail">
+                    <li class="list-group-item">Brand: {{car.brandName}}</li>
+                    <li class="list-group-item">Model: {{car.modelName}}</li>
+                    <li class="list-group-item">Color: {{car.colorName}}</li>
+                    <li class="list-group-item">DailyPrice: {{car.dailyPrice | currency}}</li>
+                    <li class="list-group-item">DailyPrice: {{car.dailyPrice | vatAdded:15 | currency}}</li>
+                    <li class="list-group-item">Description: {{car.description}}</li>
+                </ul>
+
+                <div class="d-grid gap-2">
+                    <form [formGroup]="rentDateForm">
+                        <h5 class="title text-center">Rent</h5>
+                        <div class="row mb-3">
+                            <div class="col-lg-5">
+                                <label for="rentDate" class="form-label">Rent Date:</label>
+                            </div>
+
+                            <div class="col-lg">
+                                <input type="date" class="form-control" id="rentDateInput" formControlName="rentDate">
+                            </div>
+
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-lg">
+                                <label for="returnDate" class="form-label">Return Date:</label>
+                            </div>
+                            <div class="col-lg">
+                                <input type="date" class="form-control" id="returnDateInput"
+                                    formControlName="returnDate">
+                            </div>
+                        </div>
+                        <div class="card-footer" style="background-color: white;">
+                            <div class="row mb-3">
+                                <div style="margin-left:20%; margin-right: 20%;">
+                                    <div class="row">
+                                        <div class="col">
+                                            <button class="btn btn-secondary btn-lg text-center" (click)="rent()"
+                                                type="button">Rent</button>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </form>
+                    <!-- <button class="btn btn-secondary" (click)="rent()">Rent</button> -->
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
 </div>

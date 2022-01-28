@@ -13,7 +13,7 @@ export class UserService {
 
   constructor(private httpClient:HttpClient) { }
 
-  getByEmail(email:string):Observable<SingleResponseModel<UserModel>>{
+  getByEmail(email:any):Observable<SingleResponseModel<UserModel>>{
     let newPath = this.apiUrl + "getByEmail?email=" + email
     return this.httpClient.get<SingleResponseModel<UserModel>>(newPath)
   }

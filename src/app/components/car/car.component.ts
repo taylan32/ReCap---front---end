@@ -1,3 +1,4 @@
+import { AppComponent } from './../../app.component';
 import { ToastrService } from 'ngx-toastr';
 
 import { CarDetailDto } from './../../models/carDetailDto';
@@ -17,11 +18,15 @@ export class CarComponent implements OnInit {
   carsWithDetail: CarDetailDto[] = []
   dataLoaded: boolean = false
   filterText:string=""
+  isAuthorized : boolean = this.appComponent.isAuthorized
+
   constructor(private carService: CarService,
     private activatedRoot: ActivatedRoute,
-    private toastrService:ToastrService) { }
+    private toastrService:ToastrService,
+    private appComponent:AppComponent) { }
 
   ngOnInit(): void {
+
     this.activatedRoot.params.subscribe(params => {
       if (params["brandId"]) {
         this.getByBrandId(params["brandId"])
@@ -64,4 +69,6 @@ export class CarComponent implements OnInit {
     })
   }
 
+    
+  
 }

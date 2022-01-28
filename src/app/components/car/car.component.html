@@ -1,65 +1,123 @@
-<div *ngIf="dataLoaded==false" class="spinner-border text-primary" role="status">
-    <span class="visually-hidden">Loading...</span>
-</div>
-
-<div class="mb-3">
-    <label for="filterText" class="form-label"><strong><u><em>Search for a brand</em></u></strong></label>
-    <!--  (filterText) -> import FormsModule -> app.module.ts -->
-    <input type="text" class="form-control" [(ngModel)]="filterText" list="datalistOptions" id="filterText"
-        placeholder="Type to search...">
-    <datalist id="datalistOptions">
-        <option value="Ford">
-        <option value="Honda">
-    </datalist>
-</div>
-<div *ngIf="filterText.length>3" class="alert alert-primary">
-    You are searching for <strong><u>{{filterText}}</u></strong>
-</div>
-
-<div class="container text-center" style="padding-bottom: 2%;">
-    <div class="row">
-        <div class="col">
-            <button class="btn btn-primary" routerLink="/cars/add">Add a car</button>
-        </div>
-        <div class="col">
-            <button class="btn btn-info" routerLink="/brands/add">Add a brand</button>
-        </div>
-        <div class="col">
-            <button class="btn btn-warning" routerLink="/colors/add">Add a color</button>
-        </div>
-
+<div *ngIf="isAuthorized==true">
+    <div *ngIf="dataLoaded==false" class="spinner-border text-primary" role="status">
+        <span class="visually-hidden">Loading...</span>
     </div>
-
+    
+    <div class="mb-3">
+        <label for="filterText" class="form-label"><strong><u><em>Search for a brand</em></u></strong></label>
+        <!--  (filterText) -> import FormsModule -> app.module.ts -->
+        <input type="text" class="form-control" [(ngModel)]="filterText" list="datalistOptions" id="filterText"
+            placeholder="Type to search...">
+        <datalist id="datalistOptions">
+            <option value="Ford">
+            <option value="Honda">
+        </datalist>
+    </div>
+    <div *ngIf="filterText.length>3" class="alert alert-primary">
+        You are searching for <strong><u>{{filterText}}</u></strong>
+    </div>
+    
+    <div class="container text-center" style="padding-bottom: 2%;">
+        <div class="row">
+            <div class="col">
+                <button class="btn btn-primary" routerLink="/cars/add">Add a car</button>
+            </div>
+            <div class="col">
+                <button class="btn btn-info" routerLink="/brands/add">Add a brand</button>
+            </div>
+            <div class="col">
+                <button class="btn btn-warning" routerLink="/colors/add">Add a color</button>
+            </div>
+    
+        </div>
+    
+    </div>
+    
+    <table class="table" style="text-align: center;">
+        <thead>
+            <td>Image</td>
+            <td>Brand</td>
+            <td>Model Name</td>
+            <td>Color</td>
+            <td>Model Year</td>
+            <td>Price</td>
+            <!-- <td>Date</td> -->
+            <td>Price Added Tax</td>
+    
+        </thead>
+        <tbody>
+            <tr *ngFor="let car of carsWithDetail |filter:filterText ">
+                <td>Resim Gelecek</td>
+                <td>{{car.brandName }}</td>
+                <td>{{car.modelName }}</td>
+                <td>{{car.colorName}}</td>
+                <td>{{car.modelYear}}</td>
+                <td>{{car.dailyPrice | currency }}</td>
+                <td>{{car.dailyPrice | vatAdded:15 | currency }}</td>
+                <td>
+                    <button routerLink="/cars/cardetail/{{car.carId}}" type="button" 
+                    class="btn btn-primary">Details</button><br><br>
+                    <button routerLink="/cars/update/{{car.carId}}" type="button" 
+                    class="btn btn-danger">Edit</button>
+                                
+                  </td>
+            </tr>
+        </tbody>
+    </table>
 </div>
 
-<table class="table" style="text-align: center;">
-    <thead>
-        <td>Image</td>
-        <td>Brand</td>
-        <td>Model Name</td>
-        <td>Color</td>
-        <td>Model Year</td>
-        <td>Price</td>
-        <!-- <td>Date</td> -->
-        <td>Price Added Tax</td>
+<!-- Not authorized -->
 
-    </thead>
-    <tbody>
-        <tr *ngFor="let car of carsWithDetail |filter:filterText ">
-            <td>Resim Gelecek</td>
-            <td>{{car.brandName }}</td>
-            <td>{{car.modelName }}</td>
-            <td>{{car.colorName}}</td>
-            <td>{{car.modelYear}}</td>
-            <td>{{car.dailyPrice | currency }}</td>
-            <td>{{car.dailyPrice | vatAdded:15 | currency }}</td>
-            <td>
-                <button routerLink="/cars/cardetail/{{car.carId}}" type="button" 
-                class="btn btn-primary">Details</button><br><br>
-                <button routerLink="/cars/update/{{car.carId}}" type="button" 
-                class="btn btn-danger">Edit</button>
-                            
-              </td>
-        </tr>
-    </tbody>
-</table>
+<div *ngIf="isAuthorized==false">
+    <div *ngIf="dataLoaded==false" class="spinner-border text-primary" role="status">
+        <span class="visually-hidden">Loading...</span>
+    </div>
+    
+    <div class="mb-3">
+        <label for="filterText" class="form-label"><strong><u><em>Search for a brand</em></u></strong></label>
+        <!--  (filterText) -> import FormsModule -> app.module.ts -->
+        <input type="text" class="form-control" [(ngModel)]="filterText" list="datalistOptions" id="filterText"
+            placeholder="Type to search...">
+        <datalist id="datalistOptions">
+            <option value="Ford">
+            <option value="Honda">
+        </datalist>
+    </div>
+    <div *ngIf="filterText.length>3" class="alert alert-primary">
+        You are searching for <strong><u>{{filterText}}</u></strong>
+    </div>
+    
+    
+    
+    <table class="table" style="text-align: center;">
+        <thead>
+            <td>Image</td>
+            <td>Brand</td>
+            <td>Model Name</td>
+            <td>Color</td>
+            <td>Model Year</td>
+            <td>Price</td>
+            <!-- <td>Date</td> -->
+            <td>Price Added Tax</td>
+    
+        </thead>
+        <tbody>
+            <tr *ngFor="let car of carsWithDetail |filter:filterText ">
+                <td>Resim Gelecek</td>
+                <td>{{car.brandName }}</td>
+                <td>{{car.modelName }}</td>
+                <td>{{car.colorName}}</td>
+                <td>{{car.modelYear}}</td>
+                <td>{{car.dailyPrice | currency }}</td>
+                <td>{{car.dailyPrice | vatAdded:15 | currency }}</td>
+                <td>
+                    <button routerLink="/cars/cardetail/{{car.carId}}" type="button" 
+                    class="btn btn-primary">Details</button><br><br>
+                                                    
+                  </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+

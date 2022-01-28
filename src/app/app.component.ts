@@ -10,12 +10,14 @@ export class AppComponent {
   title = 'recap';
 
   isAuthenticated : boolean = false
+  isAuthorized:boolean = false
   constructor(private authService:AuthService){
 
   }
 
   ngOnInit(): void{
     this.isAuth()
+    this.checkIfAuthorized()
   }
 
   isAuth(){
@@ -23,6 +25,16 @@ export class AppComponent {
       this.isAuthenticated = true
     }
    
+  }
+
+  checkIfAuthorized(){
+    let mail=localStorage.getItem("email")
+    if(mail?.includes("@alparslanrent.com")){
+      this.isAuthorized = true
+    }
+    else{
+      this.isAuthorized = false
+    }
   }
 
 }
