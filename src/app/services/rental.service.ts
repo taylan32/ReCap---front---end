@@ -1,3 +1,5 @@
+import { CarDetailDto } from './../models/carDetailDto';
+import { SingleResponseModel } from './../models/singleResponseModel';
 import { RentalModel } from './../models/rentalModel';
 import { ResponseModel } from './../models/responseModel';
 import { RentalDto } from './../models/rentalDto';
@@ -16,13 +18,29 @@ export class RentalService {
 
   constructor(private httpClient:HttpClient) { }
 
-  getRentals():Observable<ListResponseModel<RentalDto>>{
+  getRentals():Observable<ListResponseModel<Rental>>{
     let newPath = this.apiUrl + "getAll"
-    return this.httpClient.get<ListResponseModel<RentalDto>>(newPath)
+    return this.httpClient.get<ListResponseModel<Rental>>(newPath)
   }
 
   add(rentalModel:RentalModel):Observable<ResponseModel>{
     let newPath = this.apiUrl + "add"
     return this.httpClient.post<ResponseModel>(newPath,rentalModel)
   }
+
+  getDetail(rentalId:number):Observable<SingleResponseModel<RentalDto>>{
+    let newPath = this.apiUrl + "getDetail?rentalId=" + rentalId
+    return this.httpClient.get<SingleResponseModel<RentalDto>>(newPath)
+  }
+
+  getByCarId(carId:number):Observable<ListResponseModel<CarDetailDto>>{
+    let newPath = this.apiUrl + "getByCarId?carId=" + carId
+    return this.httpClient.get<ListResponseModel<CarDetailDto>>(newPath)
+  }
+
+  getAllRentalsWithDetail():Observable<ListResponseModel<RentalDto>>{
+    let newPath = this.apiUrl + "getDetails"
+    return this.httpClient.get<ListResponseModel<RentalDto>>(newPath)
+  }
+
 }

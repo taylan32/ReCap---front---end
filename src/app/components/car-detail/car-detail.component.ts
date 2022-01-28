@@ -138,6 +138,8 @@ export class CarDetailComponent implements OnInit {
       this.toastrService.success("Car has been rented","Rented")
       this.toastrService.info("You are being to the home page","Redirecting")
       this.router.navigate(['/cars'])
+    },responseError=>{
+      this.toastrService.error("The car you want to rent is not available now.","Error")
     })
   }
 

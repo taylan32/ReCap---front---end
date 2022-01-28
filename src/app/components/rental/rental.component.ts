@@ -17,31 +17,24 @@ import { Component, OnInit } from '@angular/core';
 export class RentalComponent implements OnInit {
 
   rentals: RentalDto[] = []
-  rentalAddForm: FormGroup
-  brands:Brand[] = []
-  customer:Customer
+  
 
 
   constructor(
     private rentalService: RentalService,
-    private brandService:BrandService
   ) { }
 
   ngOnInit(): void {
     this.getRentals()
-    this.getBrands()
   }
 
   getRentals() {
-    this.rentalService.getRentals().subscribe(response => {
+    this.rentalService.getAllRentalsWithDetail().subscribe(response => {
       this.rentals = response.data
     })
   }
-  getBrands(){
-    this.brandService.getBrands().subscribe(response=>{
-      this.brands = response.data
-    })
-  }
+
+  
 
 
  

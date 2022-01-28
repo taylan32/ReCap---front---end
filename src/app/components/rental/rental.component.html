@@ -1,0 +1,29 @@
+<table class="table" style="text-align: center;">
+    <thead>
+        <td>Image</td>
+        <td>Customer Name</td>
+        <td>Brand</td>
+        <td>Model</td>
+        <td>Color</td>
+        <td>Year</td>
+        <td>Daily Price</td>  
+        <td>Price after tax</td>
+        <td>Rent Date</td>
+        <td>Return Date</td>
+
+    </thead>
+    <tbody>
+        <tr *ngFor="let rental of rentals">
+            <td></td>
+            <td>{{rental.userName}}</td>
+            <td>{{rental.brandName | uppercase}}</td>
+            <td>Model Name</td>
+            <td>{{rental.colorName}}</td>
+            <td>{{rental.modelYear}}</td>
+            <td>{{rental.dailyPrice | currency }}</td>
+            <td>{{rental.dailyPrice | vatAdded:15 | currency }}</td>
+            <td>{{rental.rentDate}}</td>
+            <td>{{rental.returnDate}}</td>
+        </tr>
+    </tbody>
+</table>
