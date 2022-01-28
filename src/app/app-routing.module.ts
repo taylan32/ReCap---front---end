@@ -1,3 +1,4 @@
+import { PrevRentInfoComponent } from './components/prev-rent-info/prev-rent-info.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { ColorAddComponent } from './components/color-add/color-add.component';
 import { BrandAddComponent } from './components/brand-add/brand-add.component';
@@ -26,7 +27,8 @@ const routes: Routes = [
   {path:"colors/add",component:ColorAddComponent},
   {path:"carImages/add/:carId",component:CarImageAddComponent},
   {path:"profile/:userId",component:ProfileComponent},
-  {path:"rentals",component:RentalComponent}
+  {path:"rentals",component:RentalComponent},
+  {path:"rentals/:carId",component:PrevRentInfoComponent}
   
 ];
 

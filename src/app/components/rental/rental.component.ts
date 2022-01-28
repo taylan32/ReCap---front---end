@@ -1,13 +1,7 @@
-import { Customer } from './../../models/customer';
-import { CustomerService } from './../../services/customer.service';
-import { ColorService } from './../../services/color.service';
-import { BrandService } from './../../services/brand.service';
-import { Color } from './../../models/color';
-import { Brand } from './../../models/brand';
-import { FormGroup } from '@angular/forms';
 import { RentalDto } from './../../models/rentalDto';
 import { RentalService } from './../../services/rental.service';
 import { Component, OnInit } from '@angular/core';
+import { Rental } from 'src/app/models/rental';
 
 @Component({
   selector: 'app-rental',
@@ -17,7 +11,8 @@ import { Component, OnInit } from '@angular/core';
 export class RentalComponent implements OnInit {
 
   rentals: RentalDto[] = []
-  
+
+
 
 
   constructor(
@@ -37,6 +32,6 @@ export class RentalComponent implements OnInit {
   
 
 
- 
+
 
 }

@@ -1,0 +1,20 @@
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <td>CustomerName</td>
+            <td>Daily Price</td>
+            <td>Price after tax</td>
+            <td>Rent Date</td>
+            <td>Return Date</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let rental of previousRentals">
+            <td>{{rental.userName}}</td>
+            <td>{{rental.dailyPrice | currency}}</td>
+            <td>{{rental.dailyPrice | vatAdded:15 | currency}}</td>
+            <td>{{rental.rentDate}}</td>
+            <td>{{rental.returnDate}}</td>
+        </tr>
+    </tbody>
+  </table>

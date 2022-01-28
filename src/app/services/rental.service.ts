@@ -1,4 +1,3 @@
-import { CarDetailDto } from './../models/carDetailDto';
 import { SingleResponseModel } from './../models/singleResponseModel';
 import { RentalModel } from './../models/rentalModel';
 import { ResponseModel } from './../models/responseModel';
@@ -28,14 +27,14 @@ export class RentalService {
     return this.httpClient.post<ResponseModel>(newPath,rentalModel)
   }
 
-  getDetail(rentalId:number):Observable<SingleResponseModel<RentalDto>>{
+  getDetail(rentalId:number):Observable<ListResponseModel<RentalDto>>{
     let newPath = this.apiUrl + "getDetail?rentalId=" + rentalId
-    return this.httpClient.get<SingleResponseModel<RentalDto>>(newPath)
+    return this.httpClient.get<ListResponseModel<RentalDto>>(newPath)
   }
 
-  getByCarId(carId:number):Observable<ListResponseModel<CarDetailDto>>{
+  getByCarId(carId:number):Observable<ListResponseModel<RentalDto>>{
     let newPath = this.apiUrl + "getByCarId?carId=" + carId
-    return this.httpClient.get<ListResponseModel<CarDetailDto>>(newPath)
+    return this.httpClient.get<ListResponseModel<RentalDto>>(newPath)
   }
 
   getAllRentalsWithDetail():Observable<ListResponseModel<RentalDto>>{
@@ -43,4 +42,8 @@ export class RentalService {
     return this.httpClient.get<ListResponseModel<RentalDto>>(newPath)
   }
 
+  getDetailByCarId(carId:number):Observable<ListResponseModel<RentalDto>>{
+    let newPath = this.apiUrl + "getRentalDetailsByCarId?carId=" + carId
+    return this.httpClient.get<ListResponseModel<RentalDto>>(newPath)
+  }
 }

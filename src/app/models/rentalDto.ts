@@ -1,5 +1,6 @@
 export interface RentalDto{
     rentalId:number
+    carId:number
     userName:string
     brandName:string
     colorName:string

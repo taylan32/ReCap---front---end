@@ -1,3 +1,4 @@
+import { RentalDto } from './../../models/rentalDto';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { RentalService } from './../../services/rental.service';
 import { RentalModel } from './../../models/rentalModel';
@@ -28,6 +29,7 @@ export class CarDetailComponent implements OnInit {
   user:UserModel
   customerId:number
   rentDateForm:FormGroup
+  previousRentals:RentalDto[] = []
   
   constructor(
     private carService: CarService,
@@ -39,7 +41,7 @@ export class CarDetailComponent implements OnInit {
     private customerService:CustomerService,
     private userService:UserService,
     private rentalService:RentalService,
-    private formBuilder:FormBuilder
+    private formBuilder:FormBuilder,
     ) { }
 
   ngOnInit(): void {
@@ -49,7 +51,7 @@ export class CarDetailComponent implements OnInit {
       if (params['carId']) {
         this.getCarDetail(params['carId'])
         this.getImages(params['carId'])
-        
+        this.getRentalHistory(params['carId'])
       }
     })
   }
@@ -141,6 +143,14 @@ export class CarDetailComponent implements OnInit {
     },responseError=>{
       this.toastrService.error("The car you want to rent is not available now.","Error")
     })
+  }
+
+
+  getRentalHistory(carId:number){
+   this.rentalService.getDetail(carId).subscribe(response=>{
+    this.previousRentals = response.data
+    console.log(response.data)
+   }) 
   }
 
 }

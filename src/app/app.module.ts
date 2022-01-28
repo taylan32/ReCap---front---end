@@ -24,6 +24,7 @@ import { ColorAddComponent } from './components/color-add/color-add.component';
 import { CarImageAddComponent } from './components/car-image-add/car-image-add.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { RentalComponent } from './components/rental/rental.component';
+import { PrevRentInfoComponent } from './components/prev-rent-info/prev-rent-info.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { RentalComponent } from './components/rental/rental.component';
     ColorAddComponent,
     CarImageAddComponent,
     ProfileComponent,
-    RentalComponent
+    RentalComponent,
+    PrevRentInfoComponent
   ],
   imports: [
     BrowserModule,
